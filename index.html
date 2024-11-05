@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Design</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    /* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f3f8;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #f4f6fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00bcd4;
+    margin-bottom: 20px;
+}
+
+.logo span {
+    background-color: #fff;
+    color: #00bcd4;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+}
+
+.username {
+    font-size: 12px;
+    color: #333;
+    font-weight: 600;
+}
+
+.user-profile small {
+    color: #888;
+    font-size: 10px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    list-style: none;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    color: #555;
+    padding: 8px 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.nav-item.active,
+.nav-item:hover {
+    background-color: #00bcd4;
+    color: #fff;
+}
+
+.nav-item i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+
+.move-file {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #777;
+    border: 1px dashed #ccc;
+    padding:40px;
+    width: 100px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 36px;
+    flex-direction: column;
+    
+}
+
+.move-file i {
+    margin-left: -5px;
+    color: #aaa;
+   
+}
+
+/* Upload Button */
+.upload-button {
+    width: 100%;
+    background-color: #00bcd4;
+    color: #fff;
+    padding: 20px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.upload-button i {
+    margin-right: 5px;
+    
+}
+
+.dashboard-container {
+    width: 960px;  
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    padding: 8px;
+    width: 86%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+}
+
+.create-btn {
+    background-color: #00aaff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.storage-options {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.storage-card {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    width: 400px;
+}
+
+.storage-card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.last-change {
+    font-size: 12px;
+    color: #888;
+}
+
+.co-owners, .folder-section, .file-section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.owner-list, .folder-list, .file-list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.owner > img{
+    margin: 5px;
+}
+
+.owner, .folder, .file-item {
+    background: #fff;
+    padding: 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+}
+
+.file-item {
+    justify-content: space-between;
+}
+
+.file-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+.progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+
+        }
+
+        .progress {
+            padding: 10px;
+            height: 100%;
+            border-radius: 5px;
+        }
+        .google-drive{
+            background-color: aqua;
+        }
+        .owner-list{
+            justify-content: space-around;
+        }
+       
+
+.right-sidebar {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-left: 1px solid #e0e0e0;
+}
+
+.usage-bar, .usage-details {
+    margin-top: 20px;
+}
+
+.progress2 {
+    background-color: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-filled {
+    height: 100%;
+    background-color: #00aaff;
+ width:45%;
+}
+
+.clear-memory-btn {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.logout{
+    text-decoration: none;
+    background-color: #d7d2d2;
+    border-radius: 10px;
+}
+.clear-memory {
+    margin-top: auto;
+    background-color: #ffcccc;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 40px;
+    
+}
+
+.clear-memory button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.image2{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+  .table-container {
+    width: 100%;
+    max-width: px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin: 0 -9px;
+  }
+
+ 
+  .table-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 15px;
+  }
+
+ 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    text-align: left;
+    font-size: 14px;
+    color: #888;
+    padding-bottom: 10px;
+  }
+
+  tbody tr {
+    border-top: 1px solid #f0f0f0;
+  }
+
+  tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  td {
+    padding: 10px 8px;
+    font-size: 14px;
+    color: #555;
+    vertical-align: middle;
+  }
+
+  .checkbox-cell {
+    width: 30px;
+  }
+
+  .file-icon {
+    width: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .members-cell img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: -8px;
+    border: 2px solid #ffffff;
+  }
+
+  
+  .menu-icon {
+    font-weight: bold;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+  }
+  .folder-list{
+    justify-content: space-around;
+  }
+
+</style>
+<body>
+    <div class="sidebar">
+       
+        <div class="logo">
+            File <span>MG</span>
+        </div>
+        
+        
+        <div class="user-profile">
+            <img src="https://bloximages.newyork1.vip.townnews.com/theadvocate.com/content/tncms/assets/v3/editorial/7/28/728ade80-5b25-11ef-a49b-7b8472ad500d/66be302905e98.image.jpg" alt="User Image">
+            <div class="user-info">
+                <span class="username">Ryan Aldridge</span>
+                <small>Logout →</small>
+            </div>
+        </div>
+        
+        
+        <ul class="nav-menu">
+            <li class="nav-item active"><i class="fas fa-home"></i> Home</li>
+            <li class="nav-item"><i class="fas fa-share"></i> Shared File</li>
+            <li class="nav-item"><i class="fas fa-star"></i> Starred</li>
+            <li class="nav-item"><i class="fas fa-chart-bar"></i> Statistics</li>
+            <li class="nav-item"><i class="fas fa-cog"></i> Setting</li>
+            <li class="nav-item"><i class="fas fa-life-ring"></i> Support</li>
+        </ul>
+        
+       
+        <div class="move-file">
+            <i class="fas fa-file-alt"></i> Move File
+        </div>
+        <button class="upload-button"><i class="fas fa-upload"></i> Upload File</button>
+    </div>
+    <div class="dashboard-container">
+        <div class="main-content">
+            <header>
+                <input type="text" placeholder="Search..." class="search-bar" >
+                <img  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-512.png" alt="" style="height: 20px; width: 20px; ">
+                <button class="create-btn">+ Create New</button>
+            </header>
+
+            <section class="storage-options">
+                <div class="storage-card google-drive">
+                    <img class="image2" src="https://play-lh.googleusercontent.com/t-juVwXA8lDAk8uQ2L6d6K83jpgQoqmK1icB_l9yvhIAQ2QT_1XbRwg5IpY08906qEw" alt="">
+                    <h3>Google Drive</h3>
+                    <p>70 Gb / 100 Gb</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%; background-color: lightseagreen;"></div>
+                    </div>
+                    <span class="last-change">Last Changes: 22.02.20</span>
+                </div>
+                <div class="storage-card dropbox">
+                    <img class="image2" src="data:image/png;base64,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" alt="">
+                    <h3>Dropbox</h3>
+                    <p>7 Gb / 8 Gb</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%; background-color: lightseagreen;"></div>
+                    </div>
+
+                    <span class="last-change">Last Changes: 10.02.20</span>
+                </div>
+                <div class="storage-card onedrive">
+                    <img class="image2" src="https://w7.pngwing.com/pngs/683/211/png-transparent-macintosh-onedrive-computer-icons-macos-microsoft-corporation-apple-blue-text-heart-thumbnail.png" alt="">
+                    <h3>OneDrive</h3>
+                    <p>7 Gb / 8 Gb</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%; background-color: lightseagreen;"></div>
+                    </div>
+                    <span class="last-change">Last Changes: 10.02.20</span>
+                </div>
+            </section>
+
+            <section class="co-owners">
+                <h2>Co-owners</h2>
+                <div class="owner-list">
+                    <div class="owner"> <img src="https://media.licdn.com/dms/image/v2/C4E03AQGFsugwpKNDmw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517043015880?e=2147483647&v=beta&t=jCM-sy-669PJxsV_9LRhbXBZrjLnVuUmvoecjzkyVfg" alt="" style="height: 30px;width: 30px;margin-left: 10px; border-radius: 30%;">Oscar Gilbert</div>
+                    <div class="owner"><img src="https://media.licdn.com/dms/image/D4E03AQFqGpuan4apHw/profile-displayphoto-shrink_200_200/0/1677597372754?e=2147483647&v=beta&t=uz3PDPACNTpyLVKzyoFrqxlKlShlV0AJCOd68lW3eOA" alt="" style="height: 30px;width: 30px;margin-left: 10px;border-radius: 30%;"> Amelia Evans</div>
+                    <div class="owner"><img src="https://images.sidearmdev.com/crop?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Frolltide.com%2Fimages%2F2020%2F3%2F19%2FFletcher_Thomas_71.jpg&width=180&height=270&type=webp" alt="" style="height: 30px;width: 30px;margin-left: 10px;border-radius: 30%;"> Thomas Flatcher</div>
+                    <div class="owner"><img src="https://literary-arts.org/wp-content/uploads/2024/04/Wilson-headshot-cropped_c_DanielMcgarrity.jpg" alt="" style="height: 30px;width: 30px;margin-left: 10px;border-radius: 30%;">Emily Wilson </div>
+                </div>
+            </section>
+
+            <section class="folder-section">
+                <h2>Folders</h2>
+                <div class="folder-list">
+                    <div class="folder"> <img style="height: 30px;width: 30px;margin-right: 10px;" src="https://e1.pngegg.com/pngimages/525/771/png-clipart-next-folders-icon-blank-blue-folder-icon-thumbnail.png" alt="">Dribbles</div>
+                    <div class="folder"> <img style="height: 30px;width: 30px;margin-right: 10px;" src="https://e1.pngegg.com/pngimages/525/771/png-clipart-next-folders-icon-blank-blue-folder-icon-thumbnail.png" alt="">My Documents</div>
+                    <div class="folder"> <img style="height: 30px;width: 30px;margin-right: 10px;" src="https://e1.pngegg.com/pngimages/525/771/png-clipart-next-folders-icon-blank-blue-folder-icon-thumbnail.png" alt="">Database</div>
+                </div>
+            </section>
+
+            <div class="table-container">
+                <div class="table-header">Last File</div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="checkbox-cell"><input type="checkbox"></th>
+                      <th>Type</th>
+                      <th>Document Name</th>
+                      <th>Size</th>
+                      <th>Last Edit</th>
+                      <th>Members</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="checkbox-cell"><input type="checkbox"></td>
+                      <td><img src="https://e1.pngegg.com/pngimages/525/771/png-clipart-next-folders-icon-blank-blue-folder-icon-thumbnail.png" alt="File Icon" class="file-icon"></td>
+                      <td>Last Quarter Statistics</td>
+                      <td>0.7 MB</td>
+                      <td>10 March, 2020</td>
+                      <td class="members-cell">
+                        <img src="https://media.licdn.com/dms/image/v2/C4E03AQGFsugwpKNDmw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517043015880?e=2147483647&v=beta&t=jCM-sy-669PJxsV_9LRhbXBZrjLnVuUmvoecjzkyVfg" alt="Member 1">
+                        <img src="https://images.sidearmdev.com/crop?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Frolltide.com%2Fimages%2F2020%2F3%2F19%2FFletcher_Thomas_71.jpg&width=180&height=270&type=webp" alt="Member 2">
+                        <img src="https://literary-arts.org/wp-content/uploads/2024/04/Wilson-headshot-cropped_c_DanielMcgarrity.jpg" alt="Member 3">
+                      </td>
+                      <td><span class="menu-icon">⋮</span></td>
+                    </tr>
+                    <tr>
+                      <td class="checkbox-cell"><input type="checkbox"></td>
+                      <td><img src="https://e1.pngegg.com/pngimages/525/771/png-clipart-next-folders-icon-blank-blue-folder-icon-thumbnail.png" alt="File Icon" class="file-icon"></td>
+                      <td>Amelia</td>
+                      <td>1.5 MB</td>
+                      <td>11 March, 2020</td>
+                      <td class="members-cell">
+                        <img src="https://images.sidearmdev.com/crop?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Frolltide.com%2Fimages%2F2020%2F3%2F19%2FFletcher_Thomas_71.jpg&width=180&height=270&type=webp" alt="Member 1">
+                      </td>
+                      <td><span class="menu-icon">⋮</span></td>
+                    </tr>
+                    <tr>
+                      <td class="checkbox-cell"><input type="checkbox"></td>
+                      <td><img src="https://e1.pngegg.com/pngimages/525/771/png-clipart-next-folders-icon-blank-blue-folder-icon-thumbnail.png" alt="File Icon" class="file-icon"></td>
+                      <td>February Stats</td>
+                      <td>0.5 MB</td>
+                      <td>11 March, 2020</td>
+                      <td class="members-cell">
+                        <img src="https://media.licdn.com/dms/image/v2/C4E03AQGFsugwpKNDmw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517043015880?e=2147483647&v=beta&t=jCM-sy-669PJxsV_9LRhbXBZrjLnVuUmvoecjzkyVfg" alt="Member 1">
+                        <img src="https://images.sidearmdev.com/crop?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Frolltide.com%2Fimages%2F2020%2F3%2F19%2FFletcher_Thomas_71.jpg&width=180&height=270&type=webp" alt="Member 2">
+                        <img src="https://literary-arts.org/wp-content/uploads/2024/04/Wilson-headshot-cropped_c_DanielMcgarrity.jpg" alt="Member 3">
+                      </td>
+                      <td><span class="menu-icon">⋮</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+        </div>
+    </div>
+    <aside class="right-sidebar">
+        <h3> <img style="height: 40px; width: 40px; margin-right: 10px;" src="https://cdn-icons-png.flaticon.com/128/5968/5968523.png" alt="">Google Drive</h3>
+        <div class="usage-bar">
+            <p>45 Gb / 100 Gb</p>
+            <div class="progress2"><div class="progress-filled"></div></div>
+        </div>
+        
+        <div class="usage-details">
+            <p>Media File - 15 Gb</p>
+            <div class="progress2"><div class="progress-filled" style="width: 15%;"></div></div>
+            <br>
+            <br>
+            <p>Images - 10 Gb</p>
+            <div class="progress2"><div class="progress-filled" style="width: 70%;"></div></div>
+            <br>
+            <br>
+            <p>Documents - 15 Gb</p>
+            <div class="progress2"><div class="progress-filled" style="width: 45%;"></div></div>
+            <br>
+            <br>
+            <p>Other Files- 15 Gb</p>
+            <div class="progress2"><div class="progress-filled" style="width: 15%;"></div></div>
+            <br>
+            <br>
+            <p>Uknown Files - 15 Gb</p>
+            <div class="progress2"><div class="progress-filled" style="width: 35%;"></div></div>
+            <div class="clear-memory">
+                <p>Clear Memory 124 MB from Temporary Files</p>
+                 
+                <button>Clear Memory</button>
+
+         
+        </div>
+        
+    </aside>
+    </div>
+
+</body>
+</html>
